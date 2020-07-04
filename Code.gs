@@ -1,24 +1,11 @@
-/** 
-* 
-* Create a menu option for script functions. Either run this function of reload your spreadsheet to use.
-*
-* References
-* https://developers.google.com/apps-script/reference/document/document-app#getui
-*/
-
-function onOpen() {
-  var ui = SpreadsheetApp.getUi();
-  ui.createMenu('Functions')
-  .addItem('Create New Sheet with Bolded Cell Values from Current Sheet', 'updateBoldCells')
-  .addToUi();
-}
-
 /**
 *
-* Collect all cells that are bold and modify them accordingly.
+* Collect all cells that are bold and print their binary value to a new sheet.
 *
 * References
 * https://developers.google.com/apps-script/reference/slides/text-style#getfontweight
+* https://www.reddit.com/r/googlesheets/comments/hdt9ua/column_where_bold_figures_0_and_regular_figures_1/
+*
 */
 
 function updateBoldCells() {
@@ -51,4 +38,19 @@ function updateBoldCells() {
   
   //  Add new array to new sheet
   newSheet.getRange(1, 1, newSheetValues.length, newSheetValues[0].length).setValues(newSheetValues);  
+}
+
+/** 
+* 
+* Create a menu option for script functions. Either run this function of reload your spreadsheet to use.
+*
+* References
+* https://developers.google.com/apps-script/reference/document/document-app#getui
+*/
+
+function onOpen() {
+  var ui = SpreadsheetApp.getUi();
+  ui.createMenu('Functions')
+  .addItem('Create New Sheet with Bolded Cell Values from Current Sheet', 'updateBoldCells')
+  .addToUi();
 }
